@@ -3,12 +3,12 @@ extends KinematicBody2D
 enum {MOVE, ATTACK, STUN}
 var state = MOVE
 
-const ACCELERATION = 1500
-const UP_GRAV = 900
-const DOWN_GRAV = 1500
-const FRICTION = 1500
-var MAX_SPEED = 250
-const JUMP = 500
+const ACCELERATION = 15000
+const UP_GRAV = 9000
+const DOWN_GRAV = 15000
+const FRICTION = 15000
+var MAX_SPEED = 1000
+const JUMP = 4000
 
 var velocity = Vector2.ZERO
 var jumping = false
@@ -27,7 +27,6 @@ var stuned = 0
 var invincible = 0
 
 func _ready() :
-	Globals.Player = self
 	stats.atk = 2
 
 func start_attack() :
@@ -48,8 +47,8 @@ func damage(danger) :
 	if invincible < 0 :
 		stats.hp -= danger.stats.atk
 		invincible = 1
-		velocity.x = 10*(self.position.x - danger.position.x)
-		velocity.y = -100
+		velocity.x = 40*(self.position.x - danger.position.x)
+		velocity.y = -800
 
 func _input(event) :
 	if Input.is_action_just_pressed("ui_select") :

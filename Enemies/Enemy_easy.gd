@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const DOWN_GRAV = 1500
-const MAX_SPEED = 100
-const ACCELERATION = 1000
-const FRICTION = 1000
+const DOWN_GRAV = 15000
+const MAX_SPEED = 600
+const ACCELERATION = 10000
+const FRICTION = 10000
 
 var velocity = Vector2.ZERO
 var AI = "wander"
@@ -15,8 +15,7 @@ onready var stats = $Stats
 
 func _ready() :
 	stats.atk = 1
-	stats.coins = 1
-	stats.max_hp = 2
+	stats.coins = 2
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if rng.randi_range(0,1) == 0 :
@@ -30,10 +29,16 @@ func _physics_process(delta) :
 		velocity.y += DOWN_GRAV * delta
 	
 	#Turning around on an edge
-	if not $RayCast2D_left.is_colliding() and $RayCast2D_right.is_colliding() and dir == "left" :
+	if (not $RayCast2D_left.is_colliding()\
+	and $RayCast2D_right.is_colliding()\
+	or $RayCast2D_wall_left.is_colliding())\
+	and dir == "left" :
 		dir = "right"
 		stop = 1.5
-	if not $RayCast2D_right.is_colliding() and $RayCast2D_left.is_colliding() and dir == "right" :
+	if (not $RayCast2D_right.is_colliding()\
+	and $RayCast2D_left.is_colliding()\
+	or $RayCast2D_wall_right.is_colliding())\
+	and dir == "right" :
 		dir = "left"
 		stop = 1.5
 	
@@ -73,6 +78,6 @@ func _on_PlayerDetector_body_exited(body):
 
 func _on_Hurtbox_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	stats.hp -= area.get_parent().get_parent().stats.atk
-	velocity.x = 5*(self.position.x - area.get_parent().get_parent().position.x)
-	velocity.y = -100
+	velocity.x = 10*(self.position.x - area.get_parent().get_parent().position.x)
+	velocity.y = -500
 	print("got hit")

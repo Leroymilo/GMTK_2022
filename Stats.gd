@@ -17,6 +17,6 @@ func set_hp(value) :
 
 func increase_max_hp() :
 	max_hp += 1
-	hp = clamp(hp + 1, 0, max_hp)
+	hp += 1
 	emit_signal("hp_changed", hp)
 	emit_signal("max_hp_changed", max_hp)

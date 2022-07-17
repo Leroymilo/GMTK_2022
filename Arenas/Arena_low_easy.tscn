@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Arenas/Arena_low_easy.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1000, 50 )
 
 [node name="Arena_low_easy" type="Node2D"]
 script = ExtResource( 1 )
@@ -9,74 +12,40 @@ script = ExtResource( 1 )
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Platforms"]
-position = Vector2( 0, -48 )
-polygon = PoolVector2Array( 128, 536, 384, 536, 384, 520, 128, 520 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms"]
+modulate = Color( 1, 0.988235, 0.988235, 1 )
+position = Vector2( 1000, 1960 )
+shape = SubResource( 1 )
 
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Platforms"]
-position = Vector2( 96, -48 )
-polygon = PoolVector2Array( 480, 440, 480, 456, 744, 456, 744, 440 )
-
-[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Platforms"]
-position = Vector2( 0, -216 )
-polygon = PoolVector2Array( 128, 536, 384, 536, 384, 520, 128, 520 )
+[node name="Sprite" type="Sprite" parent="Platforms/CollisionShape2D"]
 
 [node name="Polygon2D" type="Polygon2D" parent="Platforms"]
-position = Vector2( 128, 240 )
-offset = Vector2( -128, -240 )
-polygon = PoolVector2Array( 128, 488, 128, 472, 384, 472, 384, 488 )
+position = Vector2( -176, 0 )
+polygon = PoolVector2Array( 176, 1912, 2176, 1912, 2176, 2008, 176, 2008 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms"]
+modulate = Color( 1, 0.988235, 0.988235, 1 )
+position = Vector2( 4144, 1968 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Platforms/CollisionShape2D2"]
 
 [node name="Polygon2D2" type="Polygon2D" parent="Platforms"]
-position = Vector2( 776, 424 )
-scale = Vector2( 1.57143, 1 )
-offset = Vector2( -799.272, -424 )
-polygon = PoolVector2Array( 672, 392, 672, 408, 840, 408, 840, 392 )
-
-[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Platforms"]
-position = Vector2( 95.2, -219.2 )
-polygon = PoolVector2Array( 480, 440, 480, 456, 744, 456, 744, 440 )
-
-[node name="Polygon2D4" type="Polygon2D" parent="Platforms"]
-position = Vector2( 775.2, 252.8 )
-scale = Vector2( 1.57143, 1 )
-offset = Vector2( -799.272, -424 )
-polygon = PoolVector2Array( 672, 392, 672, 408, 840, 408, 840, 392 )
-
-[node name="Polygon2D3" type="Polygon2D" parent="Platforms"]
-position = Vector2( 128, 72 )
-offset = Vector2( -128, -240 )
-polygon = PoolVector2Array( 128, 488, 128, 472, 384, 472, 384, 488 )
+position = Vector2( 2968, 8 )
+polygon = PoolVector2Array( 176, 1912, 2176, 1912, 2176, 2008, 176, 2008 )
 
 [node name="Enemies_pos" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 160, 448 )
+position = Vector2( 512, 2496 )
 
 [node name="Position2D2" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 328, 448 )
+position = Vector2( 4672, 2496 )
 
 [node name="Position2D3" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 608, 368 )
+position = Vector2( 464, 1688 )
 
 [node name="Position2D4" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 800, 368 )
-
-[node name="Position2D5" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 152, 280 )
-
-[node name="Position2D6" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 128, 576 )
-
-[node name="Position2D7" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 704, 368 )
-
-[node name="Position2D8" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 360, 280 )
-
-[node name="Position2D9" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 608, 192 )
-
-[node name="Position2D10" type="Position2D" parent="Enemies_pos"]
-position = Vector2( 808, 192 )
+position = Vector2( 3392, 1696 )
 
 [node name="Enemies" type="Node2D" parent="."]

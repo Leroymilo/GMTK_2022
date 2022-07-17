@@ -1,34 +1,32 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/HP_UI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Arenas/Arena_low_easy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Coin_UI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Music/normal intro.wav" type="AudioStream" id=6]
 [ext_resource path="res://Music/normal loop.wav" type="AudioStream" id=7]
-[ext_resource path="res://UI/GloriaHallelujah.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://Enemies/Enemy_medium.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/VarelaRound-Regular.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 20
+size = 80
 font_data = ExtResource( 8 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 512, 568 )
+position = Vector2( 2544, 2336 )
 
 [node name="Coin_UI" parent="." instance=ExtResource( 5 )]
 
 [node name="Round_UI" type="Label" parent="."]
-margin_left = 456.0
-margin_top = 8.0
-margin_right = 570.0
-margin_bottom = 49.0
+margin_right = 5144.0
+margin_bottom = 273.0
 custom_fonts/font = SubResource( 1 )
 text = "Round 1 / 12"
+align = 1
+valign = 1
 
 [node name="HP_UI" parent="." instance=ExtResource( 3 )]
 
@@ -37,9 +35,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 1024, 600, 1024, 0, 0, 0, 0, 600, 1024, 600, 1032, 608, -8, 608, -8, -8, 1032, -8, 1032, 608 )
-
-[node name="Arena_low_easy" parent="." instance=ExtResource( 4 )]
+polygon = PoolVector2Array( 5144, 2712, 5144, 0, 0, 0, 0, 2704, 5160, 2704, 5152, 2712, -8, 2712, -8, -8, 5152, -8, 5152, 2712 )
 
 [node name="Music" type="Node" parent="."]
 
@@ -51,11 +47,6 @@ autoplay = true
 [node name="Audio_loop" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 7 )
 volume_db = -20.0
-
-[node name="Enemy_medium" parent="." instance=ExtResource( 9 )]
-position = Vector2( 449, 390 )
-
-[node name="Enemy_medium2" parent="." instance=ExtResource( 9 )]
 
 [connection signal="finished" from="Music/Audio_intro" to="." method="_on_AudioStreamPlayer_finished"]
 [connection signal="finished" from="Music/Audio_loop" to="." method="_on_Audio_loop_finished"]

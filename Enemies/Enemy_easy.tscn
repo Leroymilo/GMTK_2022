@@ -6,11 +6,12 @@
 [ext_resource path="res://Boxes/Hurtbox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 8.0
-height = 30.0
+radius = 37.0
+height = 128.0
 
 [sub_resource type="CapsuleShape2D" id=2]
-height = 28.0
+radius = 43.0
+height = 122.0
 
 [sub_resource type="Animation" id=7]
 resource_name = "IdleLeft"
@@ -99,7 +100,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=9]
-height = 28.0
+radius = 43.0
+height = 122.0
 
 [node name="Enemy_easy" type="KinematicBody2D"]
 collision_layer = 0
@@ -107,25 +109,24 @@ collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.232, 0.232 )
 texture = ExtResource( 1 )
 hframes = 5
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
+position = Vector2( 0, 4 )
 shape = SubResource( 1 )
 
 [node name="RayCast2D_left" type="RayCast2D" parent="."]
-position = Vector2( -15, 0 )
+position = Vector2( -48, 0 )
 enabled = true
-cast_to = Vector2( 0, 30 )
+cast_to = Vector2( 0, 120 )
 collision_mask = 2
 
 [node name="RayCast2D_right" type="RayCast2D" parent="."]
-position = Vector2( 15, 0 )
+position = Vector2( 48, 0 )
 enabled = true
-cast_to = Vector2( 0, 30 )
+cast_to = Vector2( 0, 120 )
 collision_mask = 2
 
 [node name="PlayerDetector" type="Area2D" parent="."]
@@ -150,6 +151,16 @@ collision_layer = 2048
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 1 )
 shape = SubResource( 9 )
+
+[node name="RayCast2D_wall_right" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 70, 0 )
+collision_mask = 2
+
+[node name="RayCast2D_wall_left" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -70, 0 )
+collision_mask = 2
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]

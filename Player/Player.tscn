@@ -1,16 +1,20 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Boxes/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player_hit_flash.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = ExtResource( 4 )
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 9.0
-height = 38.0
+radius = 72.0
+height = 240.0
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 16.0
-height = 28.0
+radius = 64.0
+height = 154.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "AttackLeft"
@@ -295,24 +299,26 @@ collision_mask = 1025
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 16 )
 position = Vector2( 0, -27 )
-scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )
 hframes = 10
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 152 )
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, 152 )
 rotation = 3.14159
 
 [node name="Hitbox" parent="Position2D" instance=ExtResource( 3 )]
-position = Vector2( 28, -2.44784e-06 )
+position = Vector2( 136, 8 )
 collision_mask = 2048
 
 [node name="CollisionShape2D" parent="Position2D/Hitbox" index="0"]
-position = Vector2( -4, -1 )
+position = Vector2( 0, 5.96046e-07 )
 shape = SubResource( 2 )
 disabled = true
 

@@ -16,6 +16,7 @@ run/main_scene="res://Game/Game.tscn"
 [autoload]
 
 PlayerStats="*res://Player/PlayerStats.tscn"
+Globals="*res://singletons/Globals.gd"
 
 [display]
 

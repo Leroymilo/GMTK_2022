@@ -27,6 +27,7 @@ var stuned = 0
 var invincible = 0
 
 func _ready() :
+	Globals.Player = self
 	stats.atk = 2
 
 func start_attack() :

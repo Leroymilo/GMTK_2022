@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Music/normal intro.wav" type="AudioStream" id=6]
 [ext_resource path="res://Music/normal loop.wav" type="AudioStream" id=7]
 [ext_resource path="res://UI/GloriaHallelujah.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Enemies/Enemy_medium.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -50,6 +51,11 @@ autoplay = true
 [node name="Audio_loop" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 7 )
 volume_db = -20.0
+
+[node name="Enemy_medium" parent="." instance=ExtResource( 9 )]
+position = Vector2( 449, 390 )
+
+[node name="Enemy_medium2" parent="." instance=ExtResource( 9 )]
 
 [connection signal="finished" from="Music/Audio_intro" to="." method="_on_AudioStreamPlayer_finished"]
 [connection signal="finished" from="Music/Audio_loop" to="." method="_on_Audio_loop_finished"]

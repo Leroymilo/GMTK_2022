@@ -15,7 +15,8 @@ onready var stats = $Stats
 
 func _ready() :
 	stats.atk = 1
-	stats.coins = 2
+	stats.coins = 1
+	stats.max_hp = 2
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if rng.randi_range(0,1) == 0 :

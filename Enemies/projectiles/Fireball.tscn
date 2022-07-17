@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/projectiles/Fireball.gd" type="Script" id=1]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.0
+
+[sub_resource type="Curve" id=2]
+min_value = -1.0
+_data = [ Vector2( 0, 0.0113637 ), 0.0, 0.0, 0, 0, Vector2( 1, -0.0977272 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 8.0
+flag_disable_z = true
+spread = 25.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 6.0
+color = Color( 1, 0.388235, 0.00784314, 1 )
+hue_variation_random = 1.0
+hue_variation_curve = SubResource( 3 )
+
+[node name="Fireball" type="Area2D"]
+z_index = 5
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 50
+lifetime = 0.5
+process_material = SubResource( 4 )
+
+[node name="Stats" parent="." instance=ExtResource( 2 )]
+
+[connection signal="body_entered" from="." to="." method="_on_Fireball_body_entered"]
